@@ -17,7 +17,7 @@ connectDB().then(async () => {
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(cors()); // Allow all origins in production
 app.use(express.json());
 
 // Serve uploaded report files
