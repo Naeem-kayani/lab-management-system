@@ -84,11 +84,7 @@ const Login = () => {
             </Link>
           </p>
         </div>
-          Don't have an account?{' '}
-          <Link to="/register" className="text-clinic-600 font-medium hover:underline">
-            Register
-          </Link>
-        </p>
+
       </motion.div>
     </div>
   );
