@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-clinic-50 text-clinic-900;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #bcccdc;
+  border-radius: 8px;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-6 transition-all duration-300 border border-clinic-100;
+  }
+  .card:hover {
+    @apply shadow-soft -translate-y-1 border-clinic-200;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-glass rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-clinic-600 hover:bg-clinic-700 text-white font-medium px-4 py-2 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply bg-accent-500 hover:bg-accent-600 text-white font-medium px-4 py-2 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+  .btn-outline {
+    @apply border border-clinic-200 hover:bg-clinic-50 text-clinic-700 font-medium px-4 py-2 rounded-xl transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full border border-clinic-200 bg-white rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-clinic-400 focus:border-transparent transition-all duration-200 shadow-sm;
+  }
+}
