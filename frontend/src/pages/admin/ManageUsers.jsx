@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UserPlus, Ban, CheckCircle } from 'lucide-react';
+import { UserPlus, Ban, CheckCircle, Trash2 } from 'lucide-react';
 import api from '../../api/axios';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import EmptyState from '../../components/EmptyState';
@@ -37,6 +37,13 @@ const ManageUsers = () => {
   const toggleActive = async (user) => {
     await api.put(`/users/${user._id}`, { isActive: !user.isActive });
     fetchUsers();
+  };
+
+  const handleDeleteUser = async (id) => {
+    if (window.confirm('Are you sure you want to completely delete this user?')) {
+      await api.delete(`/users/${id}`);
+      fetchUsers();
+    }
   };
 
   if (loading) return <LoadingSpinner label="Loading users..." />;
@@ -90,22 +97,30 @@ const ManageUsers = () => {
                     </span>
                   </td>
                   <td className="py-4">
-                    <button
-                      onClick={() => toggleActive(u)}
-                      className={`text-xs flex items-center gap-1 ${
-                        u.isActive ? 'text-red-500 hover:text-red-700' : 'text-emerald-600 hover:text-emerald-800'
-                      }`}
-                    >
-                      {u.isActive ? (
-                        <>
-                          <Ban className="w-3.5 h-3.5" /> Deactivate
-                        </>
-                      ) : (
-                        <>
-                          <CheckCircle className="w-3.5 h-3.5" /> Activate
-                        </>
-                      )}
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => toggleActive(u)}
+                        className={`text-xs flex items-center gap-1 ${
+                          u.isActive ? 'text-orange-500 hover:text-orange-700' : 'text-emerald-600 hover:text-emerald-800'
+                        }`}
+                      >
+                        {u.isActive ? (
+                          <>
+                            <Ban className="w-3.5 h-3.5" /> Disable
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle className="w-3.5 h-3.5" /> Enable
+                          </>
+                        )}
+                      </button>
+                      <button
+                        onClick={() => handleDeleteUser(u._id)}
+                        className="text-xs flex items-center gap-1 text-red-500 hover:text-red-700"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" /> Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
