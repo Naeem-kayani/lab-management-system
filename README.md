@@ -1,5 +1,8 @@
 # Diagnostic Testing Lab Management System (MERN Stack)
 
+🚀 **Live Demo:** [https://Naeem-kayani.github.io/lab-management-system/](https://Naeem-kayani.github.io/lab-management-system/)  
+*(Or alternative Vercel link: [https://lab-management-system-6k2t.vercel.app/](https://lab-management-system-6k2t.vercel.app/))*
+
 A full-stack lab management system with 3 roles: **Patient**, **Lab Staff**, and **Admin**.
 
 ## Tech Stack
